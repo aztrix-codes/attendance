@@ -1,5 +1,4 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { students } from "../Utils/StaticData";
 
 const scheduleManager = createSlice({
   name: "Schedule",
@@ -16,7 +15,7 @@ const scheduleManager = createSlice({
 
 const subjectManager = createSlice({
   name: "Subjects",
-  initialState: ["English", "Hindi"],
+  initialState: [],
   reducers: {
     addSubject: (state, action) => {
       const existingSubject = state.find((item) => item === action.payload);
@@ -29,33 +28,50 @@ const subjectManager = createSlice({
 });
 
 const studentsSlice = createSlice({
-  name: 'studentsData',
-  initialState: students,
+  name: "studentsData",
+  initialState: [],
   reducers: {
+    addSubjectForAt: (state, action) => {
+      state.push(action.payload);
+    },
     regularPresent: (state, action) => {
-      const student = state.find(student => student.id === action.payload);
-      if (student) {
-        student.rpresentCount += 1;
-      }
+      const { id } = action.payload;
+      state.forEach(student => {
+        const foundItem = student.group.find(item => item.id === id);
+        if (foundItem) {
+          foundItem.rpresentCount += 1;
+        }
+      });
     },
     regularAbsent: (state, action) => {
-      const student = state.find(student => student.id === action.payload);
-      if (student) {
-        student.rabsentCount += 1;
-      }
+      const { id } = action.payload;
+      state.forEach(student => {
+        const foundItem = student.group.find(item => item.id === id);
+        if (foundItem) {
+          foundItem.rabsentCount += 1;
+        }
+      });
     },
     practicalPresent: (state, action) => {
-      const student = state.find(student => student.id === action.payload);
-      if (student) {
-        student.ppresentCount += 1;
-      }
+      const { id } = action.payload;
+      state.forEach(student => {
+        const foundItem = student.group.find(item => item.id === id);
+        if (foundItem) {
+          foundItem.ppresentCount += 1;
+        }
+      });
     },
     practicalAbsent: (state, action) => {
-      const student = state.find(student => student.id === action.payload);
-      if (student) {
-        student.pabsentCount += 1;
-      }
+      const { id } = action.payload;
+      state.forEach(student => {
+        const foundItem = student.group.find(item => item.id === id);
+        if (foundItem) {
+          foundItem.pabsentCount += 1;
+        }
+      });
     },
+    
+    
   },
 });
 
@@ -63,12 +79,18 @@ export const { addSchedule, removeSchedule } = scheduleManager.actions;
 
 export const { addSubject } = subjectManager.actions;
 
-export const { regularPresent, regularAbsent, practicalAbsent, practicalPresent} = studentsSlice.actions
+export const {
+  addSubjectForAt,
+  regularPresent,
+  regularAbsent,
+  practicalAbsent,
+  practicalPresent,
+} = studentsSlice.actions;
 
 export const store = configureStore({
   reducer: {
     Schedule: scheduleManager.reducer,
     Subjects: subjectManager.reducer,
-    studentsData : studentsSlice.reducer,
+    studentsData: studentsSlice.reducer,
   },
 });

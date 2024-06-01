@@ -30,12 +30,12 @@ function App() {
           <ThemeContext.Provider value={theme}>
             <NavBar />
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/schedule" element={<Schedule />} />
-              <Route path="/attendance" element={<Attendance />} />
-              <Route path="/students" element={<Students />} />
+              <Route path="/attendance" element={<Dashboard />} />
+              <Route path="/attendance/schedule" element={<Schedule />} />
+              <Route path="/attendance/attendance" element={<Attendance />} />
+              <Route path="/attendance/students" element={<Students />} />
               <Route
-                path="/settings"
+                path="/attendance/settings"
                 element={<Settings setTheme={setTheme} />}
               />
             </Routes>

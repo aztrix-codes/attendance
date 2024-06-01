@@ -6,31 +6,31 @@ export const NavMenu = [
     id: 1,
     name: "Dashboard",
     img: "https://img.icons8.com/?size=100&id=I4wZrEpGYajn&format=png&color=ffffff",
-    path: "./",
+    path: "/attendance",
   },
   {
     id: 2,
     name: "Schedule",
     img: "https://img.icons8.com/?size=100&id=7724&format=png&color=ffffff",
-    path: "./schedule",
+    path: "/attendance/schedule",
   },
   {
     id: 3,
     name: "Attendance",
     img: "https://img.icons8.com/?size=100&id=vIlfTNnpiQPe&format=png&color=ffffff",
-    path: "./attendance",
+    path: "/attendance/attendance",
   },
   {
     id: 4,
     name: "Students",
     img: "https://img.icons8.com/?size=100&id=9542&format=png&color=ffffff",
-    path: "./students",
+    path: "/attendance/students",
   },
   {
     id: 5,
     name: "Settings",
     img: "https://img.icons8.com/?size=100&id=cjKG0gGVVbhH&format=png&color=ffffff",
-    path: "./settings",
+    path: "/attendance/settings",
   },
 ];
 
@@ -84,21 +84,21 @@ function createStudent(id, rollNo, name, batch) {
   };
 }
 export const students = [
-  createStudent(101, 1, "Jack Sparrow", "FYDS"),
-  createStudent(102, 1, "Jessi", "SYDS"),
-  createStudent(103, 2, "John", "FYDS"),
-  createStudent(104, 1, "Emily", "TYDS"),
-  createStudent(105, 3, "Alex", "FYDS"),
-  createStudent(106, 2, "Sophia", "TYDS"),
-  createStudent(107, 2, "Michael", "SYDS"),
-  createStudent(108, 4, "Olivia", "FYDS"),
-  createStudent(109, 3, "William", "TYDS"),
-  createStudent(110, 3, "Emma", "SYDS"),
-  createStudent(111, 5, "Liam", "FYDS"),
-  createStudent(112, 4, "Ava", "TYDS"),
-  createStudent(113, 4, "Noah", "SYDS"),
-  createStudent(114, 6, "Isabella", "FYDS"),
-  createStudent(115, 5, "James", "TYDS"),
+  createStudent(101, 1, "Jack Sparrow", "Class 1"),
+  createStudent(102, 1, "Jessi", "Class 2"),
+  createStudent(103, 2, "John", "Class 1"),
+  createStudent(104, 1, "Emily", "Class 3"),
+  createStudent(105, 3, "Alex", "Class 1"),
+  createStudent(106, 2, "Sophia", "Class 3"),
+  createStudent(107, 2, "Michael", "Class 2"),
+  createStudent(108, 4, "Olivia", "Class 1"),
+  createStudent(109, 3, "William", "Class 3"),
+  createStudent(110, 3, "Emma", "Class 2"),
+  createStudent(111, 5, "Liam", "Class 1"),
+  createStudent(112, 4, "Ava", "Class 3"),
+  createStudent(113, 4, "Noah", "Class 2"),
+  createStudent(114, 6, "Isabella", "Class 1"),
+  createStudent(115, 5, "James", "Class 3"),
 ];
 
 

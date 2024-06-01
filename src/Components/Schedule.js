@@ -1,13 +1,19 @@
 import React, { useContext, useState, useMemo } from "react";
 import { bin, greencheck, redcross } from "../Utils/StaticData";
 import { useDispatch, useSelector } from "react-redux";
-import { addSchedule, removeSchedule, addSubject } from "../Features/store";
+import {
+  addSchedule,
+  removeSchedule,
+  addSubject,
+  addSubjectForAt,
+} from "../Features/store";
 import { ThemeContext } from "../App";
 import {
   schedulesDay,
   batches,
   hourCount,
   minuteCount,
+  students,
 } from "../Utils/StaticData";
 
 function Schedule() {
@@ -20,6 +26,10 @@ function Schedule() {
 
   const schedules = useSelector((state) => state.Schedule);
   const dispatch = useDispatch();
+
+  const group = students
+    .filter((student) => student.batch === batch)
+    .sort((a, b) => a.rollNo - b.rollNo);
 
   const addToSchedule = () => {
     const scheduleId = schedules.length + 1;
@@ -37,6 +47,13 @@ function Schedule() {
             (minute < 10 ? "0" + minute : minute) +
             " " +
             ampm,
+        })
+      );
+      dispatch(
+        addSubjectForAt({
+          batch: batch,
+          subject: subject,
+          group: group,
         })
       );
 
@@ -74,7 +91,7 @@ function Schedule() {
 
   return (
     <div className="body-container Schedule">
-      <div style={{overflowY: 'scroll'}}>
+      <div style={{ overflowY: "scroll" }}>
         {schedulesDay.map((day, index) => {
           let count = 0;
           const daySchedules = sortedSchedules.filter(
